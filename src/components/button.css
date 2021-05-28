@@ -1,0 +1,22 @@
+.btn__outer {
+  display: inline-block;
+}
+
+.btn {
+  cursor: pointer;
+  position: relative;
+  border: 1px solid transparent;
+  outline: none;
+  padding: 0.5rem;
+  background-color: var(--bg, pink);
+  border-radius: 4px;
+  /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); */
+  transition: 0.2s;
+}
+.btn:hover,
+.btn:focus {
+  box-shadow: 0 0 0 1px pink;
+}
+.btn__inner {
+  position: absolute;
+}
