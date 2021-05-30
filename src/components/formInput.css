@@ -1,7 +1,7 @@
 .input__outer {
   display: inline-block;
   position: relative;
-  padding: 0.5rem 0.25rem 0.75rem;
+  padding: 0.5rem 0.25rem 1rem;
   width: min-content;
 }
 .input {
@@ -11,46 +11,56 @@
   background-color: white;
   padding: 0.4rem 0.5rem;
   box-shadow: 0 0 2px black;
-  transition: 0.2s;
 }
-.input:focus-within {
+
+.input::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border-radius: 4px;
   box-shadow: 0 0 0 2px royalblue;
+  opacity: 0;
+  transition: 0.25s ease-in;
 }
-.input:focus-within .legend {
-  transform: translateY(-1rem);
+.input:focus-within::before {
   opacity: 1;
 }
-.input:focus-within .input__inner::placeholder {
-  opacity: 0;
-}
+
 .legend {
   position: absolute;
-  top: 0.5rem;
+  top: 0.6rem;
   left: 0.3rem;
-  font-size: 0.9rem;
   font-family: sans-serif;
-  font-weight: 500;
+  font-size: 0.9rem;
+  line-height: 0.9;
   color: grey;
   background-color: white;
-  opacity: 0;
-  padding: 1px 3px;
-  line-height: 0.75;
-  pointer-events: none;
+  padding: 0 3px;
   border-radius: 3px;
-  transition: 0.2s cubic-bezier(0.1, 0.96, 0.69, 0.9);
+  pointer-events: none;
+  transition: transform 0.25s ease;
 }
+
+.input:focus-within .legend,
+.input__inner:not(:placeholder-shown) ~ .legend {
+  transform: translateY(-1.1rem);
+  pointer-events: all;
+}
+
 .input__inner {
   border: none;
   margin: 0;
   padding: 0;
   outline: none;
-  font-size: 1rem;
 }
 .input__inner::placeholder {
-  font-size: 0.9rem;
+  font-size: 90%;
   font-family: sans-serif;
-  font-weight: 500;
-  color: grey;
+  opacity: 0;
 }
 .input-error {
   box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.5);

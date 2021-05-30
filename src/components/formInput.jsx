@@ -6,14 +6,13 @@ const FormInput = forwardRef((props, ref) => {
   return (
     <div className="input__outer">
       <div className={error ? "input input-error" : "input"}>
-        <span className="legend">{label}</span>
         <input
           {...rest}
           type={type}
           id={name}
           className="input__inner"
-          placeholder={label}
           ref={ref}
+          placeholder={label}
           onKeyPress={(e) => {
             if (e.key === "Enter") {
               e.currentTarget.blur();
@@ -21,6 +20,9 @@ const FormInput = forwardRef((props, ref) => {
             }
           }}
         />
+        <label htmlFor={name} className="legend">
+          {label}
+        </label>
       </div>
       {error && <div className="input-alert">{error}</div>}
     </div>

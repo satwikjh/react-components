@@ -5,18 +5,30 @@
 .btn {
   cursor: pointer;
   position: relative;
-  border: 1px solid transparent;
   outline: none;
-  padding: 0.5rem;
-  background-color: var(--bg, pink);
-  border-radius: 4px;
-  /* box-shadow: 0 0 3px rgba(0, 0, 0, 0.3); */
-  transition: 0.2s;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--bg, white);
+  color: var(--color, black);
+  border: 1px solid var(--color);
+  border-radius: 3px;
 }
-.btn:hover,
-.btn:focus {
-  box-shadow: 0 0 0 1px pink;
-}
-.btn__inner {
+.btn::before {
+  content: "";
   position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: scale(0, 0);
+  border-radius: 3px;
+  transition: transform 0.25s ease-out;
+}
+
+.btn:hover::before {
+  transform: scale(1, 1);
+}
+
+.btn:active::before {
+  transform: scale(1.2, 1.4);
 }

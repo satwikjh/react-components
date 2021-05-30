@@ -4,7 +4,7 @@ import FormInput from "./components/formInput";
 function App() {
   return (
     <>
-      <FormInput label="Name" />
+      <FormInput label="Name" name="name" />
       <Button>Click</Button>
     </>
   );

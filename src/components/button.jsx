@@ -1,14 +1,10 @@
 import React from "react";
 import "./button.css";
 
-const Button = ({ children, label }) => {
+const Button = ({ children }) => {
   return (
     <span className="btn__outer">
-      <button className="btn bubble">
-        {children}
-        {label}
-        <span className="btn__inner"></span>
-      </button>
+      <button className="btn bubble">{children}</button>
     </span>
   );
 };
