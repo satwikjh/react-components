@@ -2,15 +2,23 @@ import React, { forwardRef } from "react";
 import "./formInput.css";
 
 const FormInput = forwardRef((props, ref) => {
-  const { type, name, label, error, onKeyPress = () => {}, ...rest } = props;
+  const {
+    type = "text",
+    name,
+    label,
+    error,
+    onKeyPress = () => {},
+    ...rest
+  } = props;
   return (
-    <div className="input__outer">
-      <div className={error ? "input input-error" : "input"}>
+    <div className="m-input__outer">
+      <div className={error ? "m-input m-input-error" : "m-input"}>
         <input
           {...rest}
           type={type}
           id={name}
-          className="input__inner"
+          name={name}
+          className="m-input__inner"
           ref={ref}
           placeholder={label}
           onKeyPress={(e) => {
@@ -24,7 +32,11 @@ const FormInput = forwardRef((props, ref) => {
           {label}
         </label>
       </div>
-      {error && <div className="input-alert">{error}</div>}
+      {error && (
+        <div className="m-input-alert">
+          <div className="slide">{error}</div>
+        </div>
+      )}
     </div>
   );
 });
